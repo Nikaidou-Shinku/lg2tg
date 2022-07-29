@@ -1,0 +1,8 @@
+[package]
+name = "atri"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.20.1", features = ["rt-multi-thread", "macros"] }
+teloxide = { version = "0.10", features = ["macros", "auto-send"] }
