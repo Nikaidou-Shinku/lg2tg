@@ -4,5 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+serde = { version = "1.0", features = ["derive"] }
+
 tokio = { version = "1.20.1", features = ["rt-multi-thread", "macros"] }
-teloxide = { version = "0.10", features = ["macros", "auto-send"] }
+teloxide = { version = "0.10", features = ["macros", "auto-send", "sqlite-storage"] }
