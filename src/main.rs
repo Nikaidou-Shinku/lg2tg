@@ -16,6 +16,8 @@ use atri::{
   State,
   receive_luogu_username,
   receive_luogu_password,
+  receive_luogu_captcha,
+  receive_luogu_2fa,
 };
 
 #[tokio::main]
@@ -38,6 +40,14 @@ async fn main() {
     .branch(
       dptree::case![State::ReceiveLuoguPassword { username }]
         .endpoint(receive_luogu_password)
+    )
+    .branch(
+      dptree::case![State::ReceiveLuoguCaptcha { username, password, client_id, csrf_token }]
+        .endpoint(receive_luogu_captcha)
+    )
+    .branch(
+      dptree::case![State::ReceiveLuogu2FA]
+        .endpoint(receive_luogu_2fa)
     );
 
   Dispatcher::builder(bot, handler)
